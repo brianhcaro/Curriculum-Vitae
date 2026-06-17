@@ -22,26 +22,26 @@ document.addEventListener("DOMContentLoaded", function () {
     msg.style.color = "#ef4444";
 
     if (!nombre || !email || !mensaje) {
-      msg.textContent = "Por favor, completa todos los campos.";
+      msg.textContent = "Please fill in all fields.";
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      msg.textContent = "Por favor, ingresa un correo electrónico válido.";
+      msg.textContent = "Please enter a valid email address.";
       return;
     }
 
     if (mensaje.length < 10) {
-      msg.textContent = "El mensaje debe tener al menos 10 caracteres.";
+      msg.textContent = "The message must be at least 10 characters.";
       return;
     }
 
     msg.style.color = "var(--accent)";
-    msg.textContent = "Enviando mensaje...";
+    msg.textContent = "Sending message...";
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.textContent = "Enviando...";
+      submitBtn.textContent = "Sending...";
     }
     
     const serviceID = 'service_hd0dofi'; 
@@ -51,25 +51,25 @@ document.addEventListener("DOMContentLoaded", function () {
       name: nombre,
       from_email: email,
       message: mensaje,
-      title: `Consulta desde el CV de ${nombre}`
+      title: `Inquiry from ${nombre}'s CV`
     };
 
     emailjs.send(serviceID, templateID, templateParams)
       .then(() => {
         msg.style.color = "var(--accent)";
-        msg.textContent = "¡Mensaje enviado con éxito! Me pondré en contacto pronto.";
+        msg.textContent = "Message sent successfully! I'll get back to you soon.";
         form.reset();
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.textContent = "Enviar mensaje";
+          submitBtn.textContent = "Send Message";
         }
       }, (err) => {
         msg.style.color = "#ef4444";
-        msg.textContent = "Error al enviar el mensaje. Por favor, intenta de nuevo.";
+        msg.textContent = "Error sending message. Please try again.";
         console.error('EmailJS Error:', err);
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.textContent = "Enviar mensaje";
+          submitBtn.textContent = "Send Message";
         }
       });
   });

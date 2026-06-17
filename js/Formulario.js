@@ -44,8 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
       submitBtn.textContent = "Sending...";
     }
     
-    const serviceID = 'service_hd0dofi'; 
-    const templateID = 'template_8lvjn7n'; 
+    const serviceID = 'service_9y1n1ce'; 
+    const templateID = 'template_o7oq9uo'; 
 
     const templateParams = {
       name: nombre,
